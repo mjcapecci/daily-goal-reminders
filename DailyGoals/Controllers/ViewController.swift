@@ -6,6 +6,7 @@ class ViewController: NSViewController {
   @IBOutlet weak var tableView: NSTableView!
     
   var dataManager = DataManager()
+  var formatter = DateFormatter()
   let defaults = UserDefaults.standard
   var data: [[String: String]] = [[:]]
     
@@ -44,8 +45,11 @@ extension ViewController: DataManagerDelegate {
                 return time
             }
         }
+         
+        formatter.dateFormat = "hh:mm a"
         
-        self.data.append(["taskName" : taskName, "time" : adjustedTime, "rowId": rowId])
+        self.data.append(["taskName" : taskName, "time" : adjustedTime, "rowId": rowId, "sortDate": time])
+        self.data.sort {formatter.date(from: $0["time"]!)! < formatter.date(from: $1["time"]!)!}
         self.defaults.set(self.data, forKey: "taskArray")
         tableView.reloadData()
     }
