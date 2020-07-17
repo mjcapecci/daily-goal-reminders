@@ -15,6 +15,7 @@
 		869E63EE24A283D8002FDD04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869E63EC24A283D8002FDD04 /* Main.storyboard */; };
 		869E63FD24A2BE13002FDD04 /* CustomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869E63FC24A2BE13002FDD04 /* CustomTableCell.swift */; };
 		869E640624A2DBE6002FDD04 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869E640524A2DBE6002FDD04 /* ReminderViewController.swift */; };
+		86FB823424C24FD200B4884F /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FB823324C24FD200B4884F /* OptionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		869E63F024A283D8002FDD04 /* DailyGoals.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyGoals.entitlements; sourceTree = "<group>"; };
 		869E63FC24A2BE13002FDD04 /* CustomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableCell.swift; sourceTree = "<group>"; };
 		869E640524A2DBE6002FDD04 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
+		86FB823324C24FD200B4884F /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				869E63FC24A2BE13002FDD04 /* CustomTableCell.swift */,
 				869E63E524A283D7002FDD04 /* ViewController.swift */,
 				869E640524A2DBE6002FDD04 /* ReminderViewController.swift */,
+				86FB823324C24FD200B4884F /* OptionsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				869E63E624A283D7002FDD04 /* ViewController.swift in Sources */,
 				86497E9324A553A100EE9C2F /* DataManager.swift in Sources */,
 				869E63E424A283D7002FDD04 /* AppDelegate.swift in Sources */,
+				86FB823424C24FD200B4884F /* OptionsViewController.swift in Sources */,
 				869E63E924A283D7002FDD04 /* DailyGoals.xcdatamodeld in Sources */,
 				869E640624A2DBE6002FDD04 /* ReminderViewController.swift in Sources */,
 				869E63FD24A2BE13002FDD04 /* CustomTableCell.swift in Sources */,

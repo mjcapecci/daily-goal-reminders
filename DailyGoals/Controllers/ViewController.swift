@@ -15,6 +15,11 @@ class ViewController: NSViewController {
         performSegue(withIdentifier: "onAddPress", sender: self)
     }
     
+    @IBAction func onOptionsPress(_ sender: NSButton) {
+        performSegue(withIdentifier: "onOptionsPress", sender: self)
+    }
+    
+    
     @IBAction func onRemovePress(_ sender: NSButton) {
         if tableView.selectedRow != -1 {
             dataManager.removeTask(row: tableView.selectedRow)

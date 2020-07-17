@@ -20,6 +20,7 @@ class ReminderViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        preferredContentSize = view.frame.size
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             if granted {
                 print("Notifications enabled")
@@ -53,11 +54,6 @@ class ReminderViewController: NSViewController {
     }
     
     @IBAction func onCancelButtonPressed(_ sender: NSButton) {
-        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
-            for request in requests {
-                print(request)
-            }
-        })
         self.dismiss(true)
     }
 }
