@@ -50,12 +50,12 @@ extension ViewController: DataManagerDelegate {
                 return time
             }
         }
-         
-        formatter.dateFormat = "hh:mm a"
         
-        self.data.append(["taskName" : taskName, "time" : adjustedTime, "rowId": rowId, "sortDate": time])
-        self.data.sort {formatter.date(from: $0["time"]!)! < formatter.date(from: $1["time"]!)!}
-        self.defaults.set(self.data, forKey: "taskArray")
+        let sortDate = time.dropLast(6)
+         
+        self.data.append(["taskName" : taskName, "time" : adjustedTime, "rowId": rowId, "sortDate": String(sortDate)])
+        let sortedArr = self.data.sorted {Int($0["sortDate"]!)! < Int($1["sortDate"]!)!}
+        self.defaults.set(sortedArr, forKey: "taskArray")
         tableView.reloadData()
     }
     
