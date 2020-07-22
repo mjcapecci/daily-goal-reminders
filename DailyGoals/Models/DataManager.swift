@@ -1,9 +1,9 @@
 import Cocoa
 
 protocol DataManagerDelegate {
-    func didAddTask(taskName: String, time: String, rowId: String)
+    func didAddTask(task: Task)
     func didRemoveTask(row: Int)
-    func didGetTask(_ data: [[String: String]])
+    func didGetTask(_ data: [Task])
     func didFailWithError(error: Error)
 }
 
@@ -11,10 +11,10 @@ class DataManager: NSObject {
     
     static var delegate: DataManagerDelegate?
     let defaults = UserDefaults.standard
-    var data: [[String : String]]?
+    var data: [Task]?
     
-    func addTask (taskName: String, time: String, rowId: String) {
-        DataManager.self.delegate?.didAddTask(taskName: taskName, time: time, rowId: rowId)
+    func addTask (task: Task) {
+        DataManager.self.delegate?.didAddTask(task: task)
         return
     }
     
@@ -24,9 +24,11 @@ class DataManager: NSObject {
     }
     
     func getTasks() {
-        if let savedTasks = defaults.array(forKey: "taskArray") as? [[String : String]] {
-            self.data = savedTasks
-            DataManager.self.delegate?.didGetTask(savedTasks)
+        do {
+            let savedData = (try defaults.getObject(forKey: "taskArray", castTo: [Task].self))
+            DataManager.self.delegate?.didGetTask(savedData)
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

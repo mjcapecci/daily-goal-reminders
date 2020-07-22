@@ -31,9 +31,28 @@ class ReminderViewController: NSViewController {
     }
     
     @IBAction func onSubmitPress(_ sender: NSButton) {
-        let identifier = UUID().uuidString
         formatter.dateFormat = "hh:mm a"
-        dataManager.addTask(taskName: taskInput.stringValue, time: formatter.string(from: timeInput.dateValue), rowId: identifier)
+        let visibleTime = formatter.string(from: timeInput.dateValue)
+        let identifier = UUID().uuidString
+        
+        var adjustedTime: String {
+            if Array(visibleTime)[0] == "0" {
+                return String(visibleTime.dropFirst())
+            } else {
+                return visibleTime
+            }
+        }
+        
+        let sort = { () -> Int32 in
+            let chars = Array(visibleTime)
+            if chars.contains("P") {
+                return Int32(visibleTime.dropLast(6))! + 12
+            } else {
+                return Int32(visibleTime.dropLast(6))!
+            }
+        }
+        
+        dataManager.addTask(task: Task(taskName: taskInput.stringValue, notificationTime: adjustedTime, rowId: identifier, sortOrder: sort()))
         generateNotification(rowId: identifier)
         self.dismiss(true)
     }

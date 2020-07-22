@@ -11,6 +11,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.button?.title = "⏚"
         statusItem.button?.target = self
         statusItem.button?.action = #selector(showApp)
+        
+        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
